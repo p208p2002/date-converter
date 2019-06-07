@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期換算</title>
+    <link rel="stylesheet" href="src\css\bootstrap.css" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
+    <link rel="stylesheet" href="./src/css/bootstrap-material-datetimepicker.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="src\js\moment.js"></script>
+    <script type="text/javascript" src="src\js\bootstrap-material-datetimepicker.js"></script>
+
+</head>
+
+<body>
+    <div class="container bg-white">
+        <input type="text" id="date" class="form-control floating-label" placeholder="Date">
+        <script>
+            function getDate() {
+                return moment().format('YYYY-MM-DD');
+            }
+            $('#date').val(getDate())
+            $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, });
+        </script>
+        <div class="input-group">
+            <input class="form-control" id="weeks" type="text" placeholder="周數">
+        </div>
+        <div class="input-group">
+            <input class="form-control" id="days" type="text" placeholder="天數">
+        </div>
+        <div class="input-group">
+            <button class="btn btn-secondary w-100" onclick="countDays()">確認</button>
+        </div>
+
+
+    </div>
+
+    <!--  -->
+    <script>
+        function countDays() {
+            let weeks = $('#weeks').val()
+            let days = $('#days').val()
+            let date = $('#date').val()
+            if (days == '')
+                days = 0
+            if (weeks == '')
+                weeks = 0
+            totalDays = days + weeks * 7
+            timeObj = moment(date)
+            timeObj.subtract(totalDays, 'days').calendar();
+            res = timeObj.format('YYYY-MM-DD');
+            alert(res)
+        }
+    </script>
+</body>
+
+</html>
