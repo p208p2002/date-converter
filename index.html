@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,8 @@
 
 <body>
     <div class="container bg-white">
+        <h1 class="text-center">日期換算</h1>
+        <br>
         <input type="text" id="date" class="form-control floating-label" placeholder="Date">
         <script>
             function getDate() {
@@ -31,13 +33,17 @@
             $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, });
         </script>
         <div class="input-group">
-            <input class="form-control" id="weeks" type="text" placeholder="周數">
+            <input class="form-control" type="tel" id="weeks" type="text" placeholder="周數">
         </div>
         <div class="input-group">
-            <input class="form-control" id="days" type="text" placeholder="天數">
+            <input class="form-control" type="tel" id="days" type="text" placeholder="天數">
         </div>
+        <br>
         <div class="input-group">
             <button class="btn btn-secondary w-100" onclick="countDays()">確認</button>
+        </div>
+        <div class="input-group">
+            <button class="btn btn-warning w-100" onclick="reset()">清除</button>
         </div>
 
 
@@ -45,6 +51,11 @@
 
     <!--  -->
     <script>
+        function reset(){
+            let weeks = $('#weeks').val('')
+            let days = $('#days').val('')
+            let date = $('#date').val(getDate())
+        }
         function countDays() {
             let weeks = $('#weeks').val()
             let days = $('#days').val()
