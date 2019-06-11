@@ -44,7 +44,8 @@
         <div class="input-group">
             <button class="btn btn-warning w-100" onclick="reset()">清除</button>
         </div>
-
+        <br>
+        <div class="text-center"><small>最後更新:2019/06/11</small></div>
 
     </div>
 
@@ -63,7 +64,7 @@
                 days = 0
             if (weeks == '')
                 weeks = 0
-            totalDays = days + weeks * 7
+            totalDays = parseInt(days) + parseInt(weeks) * 7
             timeObj = moment(date)
             timeObj.subtract(totalDays, 'days').calendar();
             res = timeObj.format('YYYY-MM-DD');
